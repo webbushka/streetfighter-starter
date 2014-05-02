@@ -16,8 +16,6 @@ function doAction(event) {
 		ryuThrowing = $('.ryu-throwing'),
 		ryuCool = $('.ryu-cool');
 
-	console.log(event);
-
 	switch (event.type) {
 	case 'mouseenter':
 		if (app.coolPlaying) return false;
