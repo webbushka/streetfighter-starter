@@ -1,5 +1,5 @@
 window.app = {};
-app.coolPlaying = false;
+app.clubPlaying = false;
 
 $(document).ready(function () {
 	$(document).on('mouseenter', '.ryu', doAction);
@@ -18,11 +18,11 @@ function doAction(event) {
 
 	switch (event.type) {
 	case 'mouseenter':
-		if (app.coolPlaying) return false;
+		if (app.clubPlaying) return false;
 		showHide(ryuReady);
 		break;
 	case 'mouseleave':
-		if (app.coolPlaying) return false;
+		if (app.clubPlaying) return false;
 		showHide(ryuStill);
 		break;
 	case 'mousedown':
@@ -30,19 +30,19 @@ function doAction(event) {
 		playHadouken();
 		break;
 	case 'mouseup':
-		if (app.coolPlaying) showHide(ryuCool);
+		if (app.clubPlaying) showHide(ryuCool);
 		else showHide(ryuReady);
 		break;
 	case 'keydown':
-		if (event.keyCode == 88 && !app.coolPlaying) {
+		if (event.keyCode == 88 && !app.clubPlaying) {
 			showHide(ryuCool);
-			coolJams(true);
+			clubJams(true);
 		}
 		break;
 	case 'keyup':
 		if (event.keyCode == 88) {
 			showHide(ryuStill);
-			coolJams(false);
+			clubJams(false);
 		}
 		break;
 	}
@@ -74,16 +74,16 @@ function playHadouken() {
 	hadouken.play();
 }
 
-function coolJams(play) {
-	var smoothJams = $('#smoothJams')[0];
-	app.coolPlaying = play;
+function clubJams(play) {
+	var club = $('#club')[0];
+	app.clubPlaying = play;
 
 	if (play) {
-		smoothJams.volume = 0.3;
-		smoothJams.load();
-		smoothJams.play();
+		club.volume = 0.3;
+		club.load();
+		club.play();
 	}
 	else {
-		smoothJams.pause();
+		club.pause();
 	}
 }
