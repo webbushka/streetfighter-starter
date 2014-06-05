@@ -1,5 +1,7 @@
-window.app = {};
-app.clubPlaying = false;
+window.app = {
+	clubPlaying: false,
+	ryuFocus: false
+};
 
 $(document).ready(function () {
 	$(document).on('mouseenter', '.ryu', doAction);
@@ -18,10 +20,12 @@ function doAction(event) {
 
 	switch (event.type) {
 	case 'mouseenter':
-		if (app.clubPlaying) return false;
+		app.ryuFocus = true;
+		if (app.clubPlaying) return true;
 		showHide(ryuReady);
 		break;
 	case 'mouseleave':
+		app.ryuFocus = false;
 		if (app.clubPlaying) return false;
 		showHide(ryuStill);
 		break;
@@ -41,7 +45,8 @@ function doAction(event) {
 		break;
 	case 'keyup':
 		if (event.keyCode == 88) {
-			showHide(ryuStill);
+			if (app.ryuFocus) showHide(ryuReady);
+			else showHide(ryuStill);
 			clubJams(false);
 		}
 		break;
