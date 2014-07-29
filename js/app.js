@@ -4,12 +4,8 @@ window.app = {
 };
 
 $(document).ready(function () {
-	$(document).on('mouseenter', '.ryu', doAction);
-	$(document).on('mouseleave', '.ryu', doAction);
-	$(document).on('mousedown', '.ryu', doAction);
-	$(document).on('mouseup', '.ryu', doAction);
-	$(document).on('keydown', doAction);
-	$(document).on('keyup', doAction);
+	$(document).on('mouseenter mouseleave mousedown mouseup', '.ryu', doAction)
+	.on('keydown keyup', doAction);
 });
 
 function doAction(event) {
